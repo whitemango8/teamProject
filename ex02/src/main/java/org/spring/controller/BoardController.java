@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 
-// 깃주석
+// 깃주석222
 @Controller // 이거 컨트롤러얌
 @RequestMapping("/board/*") // board 접근하는 애들은 다 이 컨트롤러가 관리
 @AllArgsConstructor // 기본생성자 자동 호출(boardService주입)
