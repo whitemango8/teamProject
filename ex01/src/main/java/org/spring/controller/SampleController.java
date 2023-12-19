@@ -17,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.extern.log4j.Log4j;
 
+
+// 테스트 주석ㄹㄹㄹ
 @Controller
 @RequestMapping("/sample/*") // sample/aaa sample/bbb smaple/
 public class SampleController {
