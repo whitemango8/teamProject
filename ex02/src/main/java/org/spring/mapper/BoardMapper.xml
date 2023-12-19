@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.spring.mapper.BoardMapper">
+	<insert id="insert" parameterType="BoardVO">
+		insert into tbl_board
+		(title,content,writer)
+		values(#{title},#{content},#{writer})
+	</insert>
+	
+	<!-- insert시에 bno를 자동으로 반환하고 싶다면 -->
+	<insert id="insertSelectBno" parameterType="BoardVO"
+		keyColumn="bno" keyProperty="bno" useGeneratedKeys="true">
+		insert into tbl_board
+		(title,content,writer)
+		values(#{title},#{content},#{writer})
+	</insert>
+	<!-- 
+		keyColum : DB에서 생성된 키 값이 들어갈 컬럼 지정(DB의 컬럼명과 맞추기)
+		keyProperty : 자동생성된 키 값을 저장할 객체의 이름(여기서 쓰는 이름과맞추기)
+		useGeneratedKeys : true - DB에서 자동으로 생성되 키 사용
+	 -->
+	
+	<select id="selectAll" resultType="BoardVO">
+		select * from tbl_board 
+	</select>
+	
+	<!-- BoardVO의 bno라고 직관적으로 쓰기 위해 parameterType을 적는다-->
+	<delete id="delete" parameterType="BoardVO">
+		DELETE FROM tbl_board
+		WHERE bno = #{bno}
+	</delete>
+		
+	<!-- BoardVO의 bno라고 직관적으로 쓰기 위해 parameterType을 적는다-->
+	<select id="select" resultType="BoardVO" 
+			parameterType="BoardVO"> 
+		SELECT * FROM tbl_board
+		WHERE bno = #{bno}
+	</select>
+	
+	<update id="update" parameterType="BoardVO">
+		UPDATE tbl_board 
+		SET title = #{title},
+			content = #{content}
+		WHERE bno = #{bno}
+	</update>
+	
+	<!-- insert를 할 때 maxbno를 아예 줬으면 좋겠다
+	<select id="getMaxBno">
+		SELECT MAX(bno) FROM tbl_board
+	</select>
+	 -->
+	 
+	 
+	
+</mapper>
+
+
+
